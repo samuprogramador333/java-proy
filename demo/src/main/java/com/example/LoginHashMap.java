@@ -35,7 +35,7 @@ public class LoginHashMap {
     private static void seleccionarTipoDeUsuario(Scanner scanner) {
         System.out.println("\nSeleccione su tipo de usuario:");
         System.out.println("1. Empleado");
-        System.out.println("---------------------");
+        System.out.println("");
         System.out.println("2. Jefe");
         System.out.println("");
         System.out.print("Seleccione una opción (1/2): ");
@@ -59,12 +59,12 @@ public class LoginHashMap {
         System.out.println("---------------------");
         System.out.print("Ingrese el nombre de usuario Jefe: ");
         String usuario = scanner.nextLine();
-        System.out.println("---------------------");
+        System.out.println("");
         System.out.print("Ingrese la contraseña Jefe: ");
         String contrasena = scanner.nextLine();
 
         if (usuario.equals(usuarioJefe) && contrasena.equals(contrasenaJefe)) {
-            System.out.println("-----------------------------------");
+            System.out.println("");
             System.out.println("¡Inicio de sesión exitoso Jefe!");
             mostrarMenuJefe(scanner);
         } else {
@@ -110,14 +110,15 @@ public class LoginHashMap {
         while (opcion != 4) {
             try {
                 System.out.println("\n--- Menú Principal ---");
-                System.out.println("-----------------------------------");
+                System.out.println("");
                 System.out.println("1. Registrarte");
                 System.out.println("");
                 System.out.println("2. Iniciar sesión");
                 System.out.println("");
                 System.out.println("3. Registrar horarios");
-                System.out.println("-----------------------------------");
+               System.out.println("");
                 System.out.println("4. Salir");
+                System.out.println("-----------------------------------");
                 System.out.println("");
                 System.out.print("Seleccionar una opción: ");
                 opcion = Integer.parseInt(scanner.nextLine());
@@ -148,9 +149,9 @@ public class LoginHashMap {
     // Registrar un usuario
     private static void registrarUsuario(Scanner scanner) {
         System.out.print("Ingrese el nombre de usuario: ");
-        System.out.println("-----------------------");
+        System.out.println("");
         String nombre = scanner.nextLine();
-        System.out.println("-----------------------");
+        System.out.println("");
         System.out.print("Ingrese la contraseña: ");
         String contrasena = scanner.nextLine();
 
@@ -166,9 +167,9 @@ public class LoginHashMap {
     // Iniciar sesión de un usuario
     private static void iniciarSesion(Scanner scanner) {
         System.out.print("Ingrese su usuario: ");
-        System.out.println("-----------------------");
+        System.out.println("");
         String nombre = scanner.nextLine();
-        System.out.println("-----------------------");
+        System.out.println("");
         System.out.print("Ingrese su contraseña: ");
         String contrasena = scanner.nextLine();
 
@@ -182,8 +183,8 @@ public class LoginHashMap {
 
     // Registrar un horario de entrada o salida
     private static void registrarHorario(Scanner scanner) {
-        System.out.print("Ingrese su usuario: ");
         System.out.println("-----------------------");
+        System.out.print("Ingrese su usuario: ");
         String nombre = scanner.nextLine();
 
         if (!baseDeDatos.containsKey(nombre)) {
@@ -292,7 +293,7 @@ public class LoginHashMap {
         System.out.println("1. Eliminar un inicio de sesión");
         System.out.println("");
         System.out.println("2. Eliminar un horario de entrada o salida");
-        System.out.println("----------------------");
+        System.out.println("");
         System.out.print("Seleccionar una opción: ");
         int opcion = Integer.parseInt(scanner.nextLine());
 
@@ -341,6 +342,7 @@ public class LoginHashMap {
             System.out.println("Horario eliminado exitosamente.");
         } else {
             System.out.println("Horario no encontrado.");
+           
         }
     }
 }
