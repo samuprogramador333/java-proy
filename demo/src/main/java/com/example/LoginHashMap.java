@@ -111,12 +111,22 @@ public class LoginHashMap {
             try {
                 System.out.println("\n--- Menú Principal ---");
                 System.out.println("");
-                System.out.println("1. Registrarte");
-                System.out.println("");
-                System.out.println("2. Iniciar sesión");
-                System.out.println("");
-                System.out.println("3. Registrar horarios");
-               System.out.println("");
+
+                // Mostrar la opción de registro solo si el usuario no está registrado
+                if (!isUsuarioRegistrado()) {
+                    System.out.println("1. Registrarte");
+                }
+
+                // Mostrar la opción de iniciar sesión solo si el usuario no ha iniciado sesión
+                if (!isUsuarioLogueado()) {
+                    System.out.println("2. Iniciar sesión");
+                }
+
+                // Mostrar la opción de registrar horarios solo si el usuario está logueado
+                if (isUsuarioLogueado()) {
+                    System.out.println("3. Registrar horarios");
+                }
+
                 System.out.println("4. Salir");
                 System.out.println("-----------------------------------");
                 System.out.println("");
@@ -125,13 +135,25 @@ public class LoginHashMap {
 
                 switch (opcion) {
                     case 1:
-                        registrarUsuario(scanner);
+                        if (!isUsuarioRegistrado()) {
+                            registrarUsuario(scanner);
+                        } else {
+                            System.out.println("Ya tienes un usuario registrado.");
+                        }
                         break;
                     case 2:
-                        iniciarSesion(scanner);
+                        if (!isUsuarioLogueado()) {
+                            iniciarSesion(scanner);
+                        } else {
+                            System.out.println("Ya has iniciado sesión.");
+                        }
                         break;
                     case 3:
-                        registrarHorario(scanner);
+                        if (isUsuarioLogueado()) {
+                            registrarHorario(scanner);
+                        } else {
+                            System.out.println("Debes iniciar sesión primero.");
+                        }
                         break;
                     case 4:
                         System.out.println("Saliendo...");
@@ -144,6 +166,16 @@ public class LoginHashMap {
                 System.out.println("Por favor, ingrese un número válido.");
             }
         }
+    }
+
+    // Verificar si el usuario ya está registrado
+    private static boolean isUsuarioRegistrado() {
+        return !baseDeDatos.isEmpty();
+    }
+
+    // Verificar si el usuario ha iniciado sesión
+    private static boolean isUsuarioLogueado() {
+        return !inicioSesion.isEmpty();
     }
 
     // Registrar un usuario
@@ -342,7 +374,6 @@ public class LoginHashMap {
             System.out.println("Horario eliminado exitosamente.");
         } else {
             System.out.println("Horario no encontrado.");
-           
         }
     }
 }
