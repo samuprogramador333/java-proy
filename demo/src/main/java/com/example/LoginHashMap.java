@@ -14,18 +14,18 @@ public class LoginHashMap {
 
     private static String tipoUsuario = "";
 
-    private static final String usuarioJefe = "admin";
-    private static final String contrasenaJefe = "clave123";
+    private static final String usuarioAdministrador = "admin";
+    private static final String contrasenaAdministrador = "clave123";
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Menú inicial para seleccionar entre Empleado o Jefe
+        // Menú inicial para seleccionar entre Empleado o Administrador
         while (true) {
             seleccionarTipoDeUsuario(scanner);
 
-            if (tipoUsuario.equals("Jefe")) {
-                iniciarSesionJefe(scanner);
+            if (tipoUsuario.equals("Administrador")) {
+                iniciarSesionAdministrador(scanner);
             } else {
                 mostrarMenuEmpleado(scanner);
             }
@@ -36,7 +36,7 @@ public class LoginHashMap {
         System.out.println("\nSeleccione su tipo de usuario:");
         System.out.println("1. Empleado");
         System.out.println("");
-        System.out.println("2. Jefe");
+        System.out.println("2. Administrador");
         System.out.println("");
         System.out.print("Seleccione una opción (1/2): ");
         int opcionTipo = Integer.parseInt(scanner.nextLine());
@@ -45,39 +45,39 @@ public class LoginHashMap {
             tipoUsuario = "Empleado";
             System.out.println("Ha seleccionado: Empleado\n");
         } else if (opcionTipo == 2) {
-            tipoUsuario = "Jefe";
-            System.out.println("Ha seleccionado: Jefe\n");
+            tipoUsuario = "Administrador";
+            System.out.println("Ha seleccionado: Administrador\n");
         } else {
             System.out.println("Opción no válida. Se seleccionará por defecto: Empleado.");
             tipoUsuario = "Empleado";
         }
     }
 
-    // Iniciar sesión del Jefe con usuario y contraseña
-    private static void iniciarSesionJefe(Scanner scanner) {
-        System.out.println("\n--- Ingreso especial para Jefe ---");
+    // Iniciar sesión del Administrador con usuario y contraseña
+    private static void iniciarSesionAdministrador(Scanner scanner) {
+        System.out.println("\n--- Ingreso especial para Administrador ---");
         System.out.println("---------------------");
-        System.out.print("Ingrese el nombre de usuario Jefe: ");
+        System.out.print("Ingrese el nombre de usuario Administrador: ");
         String usuario = scanner.nextLine();
         System.out.println("");
-        System.out.print("Ingrese la contraseña Jefe: ");
+        System.out.print("Ingrese la contraseña Administrador: ");
         String contrasena = scanner.nextLine();
 
-        if (usuario.equals(usuarioJefe) && contrasena.equals(contrasenaJefe)) {
+        if (usuario.equals(usuarioAdministrador) && contrasena.equals(contrasenaAdministrador)) {
             System.out.println("");
-            System.out.println("¡Inicio de sesión exitoso Jefe!");
-            mostrarMenuJefe(scanner);
+            System.out.println("¡Inicio de sesión exitoso Administrador!");
+            mostrarMenuAdministrador(scanner);
         } else {
-            System.out.println("Usuario o contraseña incorrectos para el Jefe.");
+            System.out.println("Usuario o contraseña incorrectos para el Administrador.");
         }
     }
 
-    // Menú para el Jefe
-    private static void mostrarMenuJefe(Scanner scanner) {
+    // Menú para el Administrador
+    private static void mostrarMenuAdministrador(Scanner scanner) {
         int opcion = -1;
 
         while (opcion != 3) {
-            System.out.println("\n--- Menú de Jefe ---");
+            System.out.println("\n--- Menú de Administrador ---");
             System.out.println("1. Ver registros de inicios de sesión o horarios");
             System.out.println("");
             System.out.println("2. Eliminar inicio de sesión o registro de horario");
@@ -95,7 +95,7 @@ public class LoginHashMap {
                     eliminarRegistro(scanner);
                     break;
                 case 3:
-                    System.out.println("Saliendo del menú del Jefe.");
+                    System.out.println("Saliendo del menú del Administrador.");
                     break;
                 default:
                     System.out.println("Opción no válida. Intente nuevamente.");
